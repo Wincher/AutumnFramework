@@ -1,6 +1,6 @@
 package cn.wincher.helper;
 
-import cn.wincher.util.PropsUtil;
+import org.autumn.framework.util.PropsUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
@@ -20,7 +20,7 @@ import java.util.Map;
 import java.util.Properties;
 
 /**
- * @author huwq
+ * @author wincher
  * @since 2018/8/25
  * <p> cn.wincher.helper <p>
  */

@@ -1,7 +1,7 @@
 package cn.wincher.model;
 
 /**
- * @author huwq
+ * @author wincher
  * @since 2018/8/23
  * <p> cn.wincher.model <p>
  */

@@ -1,8 +1,8 @@
-package cn.wincher.util;
+package org.autumn.framework.util;
 
 /**
  * 转型操作工具类
- * @author huwq
+ * @author wincher
  * @since 2018/8/25
  * <p> cn.wincher.util <p>
  */

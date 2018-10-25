@@ -1,9 +1,9 @@
-package cn.wincher.util;
+package org.autumn.framework.util;
 
 import org.apache.commons.lang3.StringUtils;
 
 /**
- * @author huwq
+ * @author wincher
  * @since 2018/8/25
  * <p> cn.wincher.util <p>
  */
@@ -28,5 +28,9 @@ public class StringUtil {
    */
   public static boolean isNotEmpty(String str) {
     return !isEmpty(str);
+  }
+  
+  public static String[] splitString(String body, String separators) {
+    return body.split(separators);
   }
 }

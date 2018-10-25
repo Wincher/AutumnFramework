@@ -1,4 +1,4 @@
-package cn.wincher.util;
+package org.autumn.framework.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,7 +10,7 @@ import java.util.Properties;
 
 /**
  * 属性文件工具类
- * @author huwq
+ * @author wincher
  * @since 2018/8/25
  * <p> cn.wincher.util <p>
  */
@@ -55,7 +55,7 @@ public final class PropsUtil {
    * @param defaultValue
    * @return
    */
-  private static String getString(Properties props, String key, String defaultValue) {
+  public static String getString(Properties props, String key, String defaultValue) {
     String value = defaultValue;
     if (props.containsKey(key)) {
       value = props.getProperty(key);

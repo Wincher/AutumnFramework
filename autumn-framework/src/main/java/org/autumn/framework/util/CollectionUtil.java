@@ -1,4 +1,4 @@
-package cn.wincher.util;
+package org.autumn.framework.util;
 
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.collections4.MapUtils;
@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.Map;
 
 /**
- * @author huwq
+ * @author wincher
  * @since 2018/8/25
  * <p> cn.wincher.util <p>
  */
