@@ -1,6 +1,8 @@
 package org.autumn.framework.helper;
 
 import org.autumn.framework.annotation.Aspect;
+import org.autumn.framework.annotation.Service;
+import org.autumn.framework.annotation.Transaction;
 import org.autumn.framework.proxy.AspectProxy;
 import org.autumn.framework.proxy.Proxy;
 import org.autumn.framework.proxy.ProxyManager;
@@ -37,6 +39,8 @@ public final class AopHelper {
         proxyMap.put(proxyClass, targetClassSet);
       }
     }
+    addAspectProxy(proxyMap);
+    addTransactionProxy(proxyMap);
     return proxyMap;
   }
   
@@ -57,6 +61,22 @@ public final class AopHelper {
       }
     }
     return targetMap;
+  }
+  
+  private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
+    Set<Class<?>> proxyClassSet = ClassHelper.getClassSetBySuper(AspectProxy.class);
+    for (Class<?> proxyClass : proxyClassSet) {
+      if (proxyClass.isAnnotationPresent(Aspect.class)) {
+        Aspect aspect = proxyClass.getAnnotation(Aspect.class);
+        Set<Class<?>> targetClassSet = createTargetClassSet(aspect);
+        proxyMap.put(proxyClass, targetClassSet);
+      }
+    }
+  }
+  
+  private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap) throws Exception {
+    Set<Class<?>> serviceClassSet = ClassHelper.getClassSetBySuper(Service.class);
+    proxyMap.put(Transaction.class, serviceClassSet);
   }
   
   static {

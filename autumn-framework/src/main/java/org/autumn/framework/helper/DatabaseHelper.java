@@ -1,10 +1,10 @@
-package cn.wincher.helper;
+package org.autumn.framework.helper;
 
-import org.autumn.framework.util.PropsUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.MapListHandler;
+import org.autumn.framework.util.PropsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,21 +17,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Properties;
 
 /**
  * @author wincher
- * @since 2018/8/25
- * <p> cn.wincher.helper <p>
+ * @since 2018/11/23
+ * <p> org.autumn.framework.helper <p>
  */
 public final class DatabaseHelper {
   
   private static final Logger LOGGER = LoggerFactory.getLogger(DatabaseHelper.class);
+  private static final ThreadLocal<Connection> CONNECTION_HOLDER = new ThreadLocal<>();
   
   private static final QueryRunner QUERY_RUNNER = new QueryRunner();
-  
-  private static final ThreadLocal<Connection> CONNECTION_HOLDER = new ThreadLocal<>();
   
   private static final String DRIVER;
   private static final String URL;
@@ -189,4 +187,49 @@ public final class DatabaseHelper {
     }
   }
   
+  public static void beginTransaction() {
+    Connection conn = getConnection();
+    if (null != conn) {
+      try {
+        conn.setAutoCommit(false);
+      } catch (SQLException e) {
+        LOGGER.error("begin transaction failure", e);
+        throw new RuntimeException(e);
+      } finally {
+        CONNECTION_HOLDER.set(conn);
+      }
+    }
+  }
+  
+  public static void commitTranscation() {
+    Connection conn = getConnection();
+    if (null != conn) {
+      try {
+        conn.commit();
+        conn.close();
+      } catch (SQLException e) {
+        LOGGER.error("commit transaction failure", e);
+        throw new RuntimeException(e);
+      } finally {
+        CONNECTION_HOLDER.remove();
+      }
+    }
+  }
+  
+  /**
+   * rollback transaction
+   */
+  public static void rollbackTransaction() {
+    Connection conn = getConnection();
+    if (null != conn) {
+      try {
+        conn.rollback();
+      } catch (SQLException e) {
+        LOGGER.error("rollback transaction failure", e);
+        throw new RuntimeException(e);
+      } finally {
+        CONNECTION_HOLDER.remove();
+      }
+    }
+  }
 }
