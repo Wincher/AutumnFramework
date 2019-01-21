@@ -1,5 +1,6 @@
 package cn.wincher.helper;
 
+import cn.wincher.model.Customer;
 import org.autumn.framework.util.PropsUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
@@ -189,4 +190,8 @@ public final class DatabaseHelper {
     }
   }
   
+  public static boolean insertEntity(Class<Customer> customerClass, Map<String, Object> fieldMap) {
+    //todo
+    return false;
+  }
 }

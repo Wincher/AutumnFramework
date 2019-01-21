@@ -2,6 +2,9 @@ package cn.wincher.service;
 
 import cn.wincher.helper.DatabaseHelper;
 import cn.wincher.model.Customer;
+import org.autumn.framework.annotation.Transaction;
+import org.autumn.framework.bean.FileParam;
+import org.autumn.framework.helper.UploadHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,9 +46,13 @@ public class CustomerService {
    * @param fieldMap
    * @return
    */
-  public boolean createCustomer(Map<String, Object> fieldMap) {
-    // todo:
-    return false;
+  @Transaction
+  public boolean createCustomer(Map<String, Object> fieldMap, FileParam fileParam) {
+    boolean result = DatabaseHelper.insertEntity(Customer.class, fieldMap);
+    if (result) {
+      UploadHelper.uploadFile("/tmp/upload", fileParam);
+    }
+    return result;
   }
   
   /**

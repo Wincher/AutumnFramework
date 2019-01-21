@@ -2,29 +2,26 @@ package cn.wincher.controller;
 
 import cn.wincher.model.Customer;
 import cn.wincher.service.CustomerService;
+import org.autumn.framework.annotation.Action;
+import org.autumn.framework.annotation.Controller;
+import org.autumn.framework.bean.Data;
+import org.autumn.framework.bean.FileParam;
+import org.autumn.framework.bean.Param;
+import org.autumn.framework.bean.View;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author wincher
  * @since 2018/8/23
  * <p> cn.wincher.controller <p>
  */
-@WebServlet("/customer")
-public class CustomerCreateServlet extends HttpServlet {
+@Controller
+public class CustomerController {
   
   private CustomerService customerService;
-  
-  @Override
-  public void init() throws ServletException {
-    customerService = new CustomerService();
-  }
   
   /**
    * 进入 创建客户 页面
@@ -33,22 +30,32 @@ public class CustomerCreateServlet extends HttpServlet {
    * @throws ServletException
    * @throws IOException
    */
-  @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    List<Customer> customerList = customerService.getCustomerList();
-    req.setAttribute("customerList", customerList);
-    req.getRequestDispatcher("/WEB-INF/views/customer.jsp").forward(req, resp);
+//  @Override
+//  protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//    List<Customer> customerList = customerService.getCustomerList();
+//    req.setAttribute("customerList", customerList);
+//    req.getRequestDispatcher("/WEB-INF/views/customer.jsp").forward(req, resp);
+//  }
+  
+  /**
+   * deal create customer request
+   */
+  @Action("post:/customer_create")
+  public Data createSubmit(Param param) {
+    Map<String, Object> fieldMap = param.getFieldMap();
+    FileParam fileParam = param.getFile("photo");
+    boolean result = customerService.createCustomer(fieldMap, fileParam);
+    return new Data(result);
   }
   
   /**
-   * 处理 创建客户 请求
-   * @param req
-   * @param resp
-   * @throws ServletException
-   * @throws IOException
+   * enter customer list page
    */
-  @Override
-  protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-    // todo:
+  @Action("get:/customer")
+  public View index() {
+    List<Customer> customerList = customerService.getCustomerList();
+    return new View("customer.jsp").addModel("customerList", customerList);
   }
+
+
 }
