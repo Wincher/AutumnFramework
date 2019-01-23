@@ -8,6 +8,7 @@ import org.autumn.framework.util.PropsUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.sql.DataSource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -231,5 +232,9 @@ public final class DatabaseHelper {
         CONNECTION_HOLDER.remove();
       }
     }
+  }
+  
+  public static DataSource getDataSource() {
+    return null;
   }
 }
