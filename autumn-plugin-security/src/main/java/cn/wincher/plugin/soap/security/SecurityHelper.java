@@ -1,6 +1,6 @@
-package cn.wincher.plugin.security;
+package cn.wincher.plugin.soap.security;
 
-import cn.wincher.plugin.security.exception.AuthcException;
+import cn.wincher.plugin.soap.security.exception.AuthcException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;

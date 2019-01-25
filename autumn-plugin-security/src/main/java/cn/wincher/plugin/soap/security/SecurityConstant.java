@@ -1,4 +1,4 @@
-package cn.wincher.plugin.security;
+package cn.wincher.plugin.soap.security;
 
 /**
  * @author wincher

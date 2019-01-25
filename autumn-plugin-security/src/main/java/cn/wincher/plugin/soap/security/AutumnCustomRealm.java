@@ -1,14 +1,12 @@
-package cn.wincher.plugin.security;
+package cn.wincher.plugin.soap.security;
 
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.SimplePrincipalCollection;
-import org.autumn.framework.util.ArrayUtil;
 import org.autumn.framework.util.CollectionUtil;
 
 import java.util.HashSet;

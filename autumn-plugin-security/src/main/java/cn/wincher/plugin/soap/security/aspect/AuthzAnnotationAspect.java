@@ -1,8 +1,7 @@
-package cn.wincher.plugin.security.aspect;
+package cn.wincher.plugin.soap.security.aspect;
 
-import cn.wincher.plugin.security.annotation.User;
-import cn.wincher.plugin.security.exception.AuthcException;
-import cn.wincher.plugin.security.exception.AuthzException;
+import cn.wincher.plugin.soap.security.annotation.User;
+import cn.wincher.plugin.soap.security.exception.AuthzException;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;

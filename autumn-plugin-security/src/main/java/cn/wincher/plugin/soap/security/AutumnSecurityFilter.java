@@ -1,4 +1,4 @@
-package cn.wincher.plugin.security;
+package cn.wincher.plugin.soap.security;
 
 import org.apache.shiro.cache.CacheManager;
 import org.apache.shiro.cache.MemoryConstrainedCacheManager;

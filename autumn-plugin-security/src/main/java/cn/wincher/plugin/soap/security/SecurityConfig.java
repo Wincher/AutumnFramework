@@ -1,4 +1,4 @@
-package cn.wincher.plugin.security;
+package cn.wincher.plugin.soap.security;
 
 import org.autumn.framework.helper.ConfigHelper;
 import org.autumn.framework.util.ReflectionUtil;

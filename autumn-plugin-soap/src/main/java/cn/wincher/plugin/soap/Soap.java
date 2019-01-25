@@ -1,4 +1,4 @@
-package cn.wincher.plugin.security.annotation;
+package cn.wincher.plugin.soap;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,10 +7,14 @@ import java.lang.annotation.Target;
 
 /**
  * @author wincher
- * @since 2019-01-23
- * <p> cn.wincher.plugin.security.annotation <p>
+ * @since 2019-01-25
+ * <p> cn.wincher.plugin <p>
  */
-@Target({ElementType.TYPE, ElementType.METHOD})
+@Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface User {
+public @interface Soap {
+  /**
+   * service name
+   */
+  String value() default "";
 }

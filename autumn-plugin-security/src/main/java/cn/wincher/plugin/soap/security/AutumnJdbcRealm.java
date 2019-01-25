@@ -1,4 +1,4 @@
-package cn.wincher.plugin.security;
+package cn.wincher.plugin.soap.security;
 
 import org.apache.shiro.realm.jdbc.JdbcRealm;
 import org.autumn.framework.helper.DatabaseHelper;

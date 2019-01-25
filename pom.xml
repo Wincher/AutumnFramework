@@ -10,6 +10,7 @@
     <modules>
         <module>autumn-framework</module>
         <module>autumn-plugin-security</module>
+        <module>autumn-plugin-soap</module>
     </modules>
 
     <packaging>pom</packaging>

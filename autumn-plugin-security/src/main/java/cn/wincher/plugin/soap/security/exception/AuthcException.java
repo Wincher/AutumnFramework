@@ -1,4 +1,4 @@
-package cn.wincher.plugin.security.exception;
+package cn.wincher.plugin.soap.security.exception;
 
 import org.apache.shiro.authc.AuthenticationException;
 
