@@ -28,7 +28,7 @@ public class TransactionProxy implements Proxy {
         DatabaseHelper.beginTransaction();
         LOGGER.debug("begin transaction");
         result = proxyChain.doProxyChain();
-        DatabaseHelper.commitTranscation();
+        DatabaseHelper.commitTranslation();
         LOGGER.debug("commit transaction");
       } catch (Exception e) {
         DatabaseHelper.rollbackTransaction();

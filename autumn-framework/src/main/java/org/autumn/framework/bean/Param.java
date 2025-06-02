@@ -75,7 +75,7 @@ public class Param {
   /**
    * get only one upload file
    */
-  public  FileParam getFile(String fieldName) {
+  public FileParam getFile(String fieldName) {
     List<FileParam> fileList = getFileList(fieldName);
     if (CollectionUtil.isNotEmpty(fileList) && 1 == fileList.size()) {
       return fileList.get(0);

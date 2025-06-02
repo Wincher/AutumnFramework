@@ -202,7 +202,7 @@ public final class DatabaseHelper {
     }
   }
   
-  public static void commitTranscation() {
+  public static void commitTranslation() {
     Connection conn = getConnection();
     if (null != conn) {
       try {
